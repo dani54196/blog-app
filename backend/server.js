@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const helmet = require("helmet");
 
+const db = require("./app/models/index.js");
 const IndexRoutes = require("./app/routes/index.routes.js");
 
 const app = express();
@@ -14,21 +15,19 @@ var corsOptions = { origin: "http://localhost:8081" };
 // middlewares
 app.use(cors(corsOptions));
 app.use(morgan("dev"));
+app.use(helmet())
 app.use(express.json()); // parse requests of content-type - application/json
 app.use(express.urlencoded({ extended: true }));// parse requests of content-type - application/x-www-form-urlencoded
+
 // routes
 app.use("/", IndexRoutes);
 
 // db
-const db = require("./app/models");
-
 db.sequelize.sync();
 // // drop the table if it already exists
 // db.sequelize.sync({ force: true }).then(() => {
 //   console.log("Drop and re-sync db.");
 // });
-
-require("./app/routes/turorial.routes")(app);
 
 // server
 app.listen(PORT, () => {
