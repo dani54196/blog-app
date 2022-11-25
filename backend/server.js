@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const helmet = require("helmet");
 
-const db = require("./app/models/index.js");
+const sequelize = require("./app/models/index.js");
 const IndexRoutes = require("./app/routes/index.routes.js");
 
 const app = express();
@@ -23,11 +23,13 @@ app.use(express.urlencoded({ extended: true }));// parse requests of content-typ
 app.use("/", IndexRoutes);
 
 // db
-db.sequelize.sync();
-// // drop the table if it already exists
-// db.sequelize.sync({ force: true }).then(() => {
-//   console.log("Drop and re-sync db.");
-// });
+sequelize.sync({ force: false })
+  .then(() => {
+    console.log("db Connected");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // server
 app.listen(PORT, () => {
