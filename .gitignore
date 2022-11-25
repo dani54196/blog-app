@@ -1,0 +1,5 @@
+.db
+# Make sure to include everything in node_modules.
+!node_modules/**
+backend/.env.sample
+.env
