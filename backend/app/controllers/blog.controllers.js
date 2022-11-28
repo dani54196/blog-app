@@ -1,8 +1,8 @@
 const Blog = require("../models/blog.models")
 
-const postsCtrl = {};
+const blogCtrl = {};
 
-postsCtrl.getBlogs = async (req, res) => {
+blogCtrl.getBlogs = async (req, res) => {
 
   try {
     Blog.findAll().then((blogs) => {
@@ -15,10 +15,9 @@ postsCtrl.getBlogs = async (req, res) => {
   }
 };
 
-/*
-postsCtrl.createPost = async (req, res) => {
+blogCtrl.createABlog = async (req, res) => {
   try {
-    Post.create({
+    Blog.create({
       title: req.body.title,
       body: req.body.body,
     }).then((post) => {
@@ -31,9 +30,9 @@ postsCtrl.createPost = async (req, res) => {
   }
 };
 
-postsCtrl.getPost = async (req, res) => {
+blogCtrl.getBlog = async (req, res) => {
   try {
-    Post.findByPk(req.params.id).then((post) => {
+    Blog.findByPk(req.params.id).then((post) => {
       res.json(post);
     });
   } catch (err) {
@@ -43,14 +42,14 @@ postsCtrl.getPost = async (req, res) => {
   }
 };
 
-postsCtrl.deletePost = async (req, res) => {
+blogCtrl.deleteBlog = async (req, res) => {
   try {
-    Post.destroy({
+    Blog.destroy({
       where: {
         id: req.params.id,
       },
     });
-    res.json({ msg: "post delete" });
+    res.json({ msg: "blog delete" });
   } catch (err) {
     res.status(400).json({
       error: err,
@@ -58,9 +57,9 @@ postsCtrl.deletePost = async (req, res) => {
   }
 };
 
-postsCtrl.updatePost = async (req, res) => {
+blogCtrl.updateBlog = async (req, res) => {
   try {
-    Post.update(
+    Blog.update(
       { title: req.body.title, body: req.body.body },
       {
         where: {
@@ -68,7 +67,7 @@ postsCtrl.updatePost = async (req, res) => {
         },
       }
     );
-    res.json({ msg: "update posts" });
+    res.json({ msg: "update blog" });
   } catch (err) {
     res.status(400).json({
       error: err,
@@ -76,5 +75,4 @@ postsCtrl.updatePost = async (req, res) => {
   }
 };
 
-*/
-module.exports = postsCtrl;
+module.exports = blogCtrl;

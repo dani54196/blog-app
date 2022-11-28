@@ -7,7 +7,6 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
 });
 
 // db test
-/*
 sequelize.sync({ force: true })
   .then(() => {
     console.log("db Connected");
@@ -15,5 +14,5 @@ sequelize.sync({ force: true })
   .catch((err) => {
     console.log(err);
   });
-*/
+
 module.exports = sequelize;
