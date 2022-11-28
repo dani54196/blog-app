@@ -1,15 +1,15 @@
 const config = require("../config/auth.config");
 const { v4: uuidv4 } = require("uuid");
-const { Sequelize, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require("./index.js");
 
-class RefreshToken extends Models { }
+class RefreshToken extends Model { }
 RefreshToken.init({
   token: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
   },
   expiryDate: {
-    type: Sequelize.DATE,
+    type: DataTypes.DATE,
   },
 }, {
   sequelize,

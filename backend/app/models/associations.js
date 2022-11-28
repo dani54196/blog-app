@@ -1,23 +1,23 @@
-const user = require("../models/user.model.js")
-const role = require("../models/role.model.js")
-const refreshToken = require("../models/refreshToken.model.js")
+const user = require("./user.models")
+const role = require("./role.models")
+const refreshToken = require("./refreshToken.models")
 
-role.belongsToMany(db.user, {
+role.belongsToMany(user, {
   through: "user_roles",
   foreignKey: "roleId",
   otherKey: "userId"
 });
 
-user.belongsToMany(db.role, {
+user.belongsToMany(role, {
   through: "user_roles",
   foreignKey: "userId",
   otherKey: "roleId"
 });
 
-refreshToken.belongsTo(db.user, {
+refreshToken.belongsTo(user, {
   foreignKey: 'userId', targetKey: 'id'
 });
-user.hasOne(db.refreshToken, {
+user.hasOne(refreshToken, {
   foreignKey: 'userId', targetKey: 'id'
 });
 

@@ -1,0 +1,28 @@
+### Rest client
+@host = http://localhost
+@port = 8080
+@api = {{host}}:{{port}}/api/blog
+
+### Get all blogs
+GET {{api}}
+### Create a blog
+POST {{api}}/
+Content-Type: application/json
+
+{
+  "title": "titulo2",
+  "body": "body2"
+}
+### get a blog
+GET {{api}}/1
+### Create a blog
+PUT {{api}}/2
+Content-Type: application/json
+
+{
+  "title": "edit title",
+  "body": "cuerpo editado"
+}
+### delete a blog
+delete {{api}}/1
+

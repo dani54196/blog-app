@@ -1,14 +1,14 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require("sequelize");
 const sequelize = require("./index.js");
 
 class Role extends Model {}
 Role.init({
   id: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     primaryKey: true
   },
   name: {
-    type: Sequelize.STRING
+    type: DataTypes.STRING
   }
 },{
   sequelize,

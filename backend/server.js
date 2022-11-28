@@ -5,6 +5,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 const IndexRoutes = require("./app/routes/index.routes.js");
+require ("./app/models/associations")
 
 const app = express();
 // settings

@@ -6,5 +6,6 @@ router.get("/", (req, res) => {
 });
 
 router.use("/api/blog", require("./blog.routes"))
+router.use("/api/test", require("./user.routes"))
 
 module.exports = router;

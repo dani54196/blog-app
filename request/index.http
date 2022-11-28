@@ -4,4 +4,4 @@
 @api = {{host}}:{{port}}
 
 ### index
-GET {{api}}/
+GET {{api}}
