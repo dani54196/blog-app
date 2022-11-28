@@ -4,7 +4,6 @@ const morgan = require("morgan");
 const cors = require("cors");
 const helmet = require("helmet");
 
-const sequelize = require("./app/models/index.js");
 const IndexRoutes = require("./app/routes/index.routes.js");
 
 const app = express();
@@ -21,15 +20,6 @@ app.use(express.urlencoded({ extended: true }));// parse requests of content-typ
 
 // routes
 app.use("/", IndexRoutes);
-
-// db
-sequelize.sync({ force: false })
-  .then(() => {
-    console.log("db Connected");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
 // server
 app.listen(PORT, () => {
