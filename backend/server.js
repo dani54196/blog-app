@@ -5,12 +5,12 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 const IndexRoutes = require("./app/routes/index.routes.js");
-require ("./app/models/associations")
+// require ("./app/models/associations")
 
 const app = express();
 // settings
 const PORT = process.env.NODE_DOCKER_PORT || 8080;
-var corsOptions = { origin: "http://localhost:8081" };
+var corsOptions = { origin: "http://localhost:5173",  };
 
 // middlewares
 app.use(cors(corsOptions));
@@ -26,3 +26,6 @@ app.use("/", IndexRoutes);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
+
+//    https://github.dev/bezkoder/jwt-refresh-token-node-js
+//    https://github.dev/dani54196/great-api/tree/main/src

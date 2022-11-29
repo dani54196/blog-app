@@ -6,8 +6,8 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
   dialect: "mysql",
 });
 
-// db test
-sequelize.sync({ force: true })
+// db restart
+sequelize.sync({ force: false })
   .then(() => {
     console.log("db Connected");
   })
