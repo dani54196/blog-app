@@ -10,8 +10,8 @@ POST {{api}}/
 Content-Type: application/json
 
 {
-  "title": "titulo2",
-  "body": "body2"
+  "title": "one",
+  "body": "one"
 }
 ### get a blog
 GET {{api}}/1
